@@ -1,15 +1,19 @@
 import * as mathModule from './math-functions.js';
 import * as e from './elements.js';
 
-export function stdCalculator() {
-    const numberOne = e.numberOneInput.value;
-    const numberTwo = e.numberTwoInput.value;
-    const expression = e.expressionInput.value;
+let numberOne = e.numberOneInput.value;
+let numberTwo = e.numberTwoInput.value;
+let expression = e.expressionInput.value;
 
-    if (numberOne == '' || numberOne == null) {
+export function stdCalculator() {
+    numberOne = e.numberOneInput.value;
+    numberTwo = e.numberTwoInput.value;
+    expression = e.expressionInput.value;
+
+    if (numberOne == '' || numberOne == null || numberOne == NaN) {
         e.numOneError.textContent = `Въведи число!`;
     }
-    if (numberTwo == '' || numberTwo == null) {
+    if (numberTwo == '' || numberTwo == null || numberTwo == NaN) {
         e.numTwoError.textContent = `Въведи число!`;
     }
 
@@ -22,6 +26,34 @@ export function stdCalculator() {
     } else if (expression == '-') {
         mathModule.subtract(numberOne, numberTwo);
     } else {
-        e.expError.textContent = `Избери един от следните оператори: +, -, / или *`;
+        e.expError.textContent = `Посочи оператор!`;
     }
+
+    stdCalcHistory();
 }
+
+function stdCalcHistory() {
+    numberOne = e.numberOneInput.value;
+    numberTwo = e.numberTwoInput.value;
+    expression = e.expressionInput.value;
+
+    if (e.history.innerHTML == 'Няма история') {
+        e.history.textContent = '';
+    }
+    let li = document.createElement('li');
+    e.history.appendChild(li);
+    li.classList = 'list-group-item list-group-item-action li-tag';
+
+    let count = 0;
+    let tag = document.getElementsByClassName('list-group-item list-group-item-action li-tag');
+    for (let i = 1; i <= tag.length; i++) {
+        count++
+    };
+
+    let total = e.resultStd.textContent.replace('Резултат: ', '');
+
+    let content =
+        'Ред ' + count + ': ' + ' ' + numberOne + ' ' + ' ' + expression + ' ' + numberTwo + ' = ' + total;
+
+    li.textContent = content;
+};

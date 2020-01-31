@@ -22,6 +22,9 @@ e.calcType.addEventListener('click', function (calcSelector) {
 // Clear calculator values and errors
 e.btnStdClearCalc.addEventListener('click', clearModule.clearCalculator);
 
+// Clear calculator history
+e.btnClearHistory.addEventListener('click', clearModule.clearHistory);
+
 // Standart Calculator
 e.btnStdCalc.addEventListener('click', stdCalculator.stdCalculator);
 

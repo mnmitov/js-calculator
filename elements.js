@@ -2,7 +2,8 @@
 export const numberOneInput = document.getElementById('number-one');
 export const numberTwoInput = document.getElementById('number-two');
 export const expressionInput = document.getElementById('expression');
-export const result = document.getElementById('result');
+export const resultStd = document.getElementById('result-std');
+export const history = document.getElementById('history');
 export const numOneError = document.getElementById('numone-error');
 export const numTwoError = document.getElementById('numtwo-error');
 export const expError = document.getElementById('expression-error');
@@ -11,6 +12,7 @@ export const standartCalculator = document.getElementById('standart-calculator')
 export const graphicCalculator = document.getElementById('graphic-calculator');
 export const btnStdCalc = document.getElementById('btn-std');
 export const btnStdClearCalc = document.getElementById('btn-std-clear');
+export const btnClearHistory = document.getElementById('btn-std-clear-history');
 export const title = document.querySelector('head > title');
 
 //gx Calculator elements
