@@ -37,23 +37,25 @@ function stdCalcHistory() {
     numberTwo = e.numberTwoInput.value;
     expression = e.expressionInput.value;
 
-    if (e.history.innerHTML == 'Няма история') {
-        e.history.textContent = '';
-    }
-    let li = document.createElement('li');
-    e.history.appendChild(li);
-    li.classList = 'list-group-item list-group-item-action li-tag';
-
     let count = 0;
-    let tag = document.getElementsByClassName('list-group-item list-group-item-action li-tag');
+    let tag = document.getElementsByClassName('list-group-item list-group-item-action li-tag lead');
     for (let i = 1; i <= tag.length; i++) {
         count++
     };
 
     let total = e.resultStd.textContent.replace('Резултат: ', '');
+    const time = new Date().toLocaleTimeString();
 
-    let content =
-        'Ред ' + count + ': ' + ' ' + numberOne + ' ' + ' ' + expression + ' ' + numberTwo + ' = ' + total;
-
-    li.textContent = content;
-};
+    if (expression != 'Избери оператор') {
+        if (e.history.innerHTML == 'Няма история') {
+            e.history.textContent = '';
+        }
+        let li = document.createElement('li');
+        e.history.prepend(li);
+        li.classList = 'list-group-item list-group-item-action li-tag lead';
+        let content =
+            ['Ред ' + count + "@" + time + ' <> ' + ' '
+                + numberOne + ' ' + ' ' + expression + ' ' + numberTwo + ' = ' + total];
+        li.textContent = content;
+    }
+};  
