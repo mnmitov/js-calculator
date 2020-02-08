@@ -3,17 +3,16 @@ import * as dashboard from './dashboardElements.js';
 
 export function showDateAndTime() {
     const dateTime = new Date();
-
     function greetDay() {
         let dayTime = '';
-        if (dateTime.getHours() > 23) {
+        if (dateTime.getHours() >= 0 && dateTime.getHours() <= 5) {
             dayTime = 'Лягай да спиш! :)'
-        } else if (dateTime.getHours() > 18) {
-            dayTime = 'Добър вечер!'
-        } else if (dateTime.getHours() > 10) {
-            dayTime = 'Добър ден!'
-        } else if (dateTime.getHours() > 5) {
+        } else if (dateTime.getHours() >= 6 && dateTime.getHours() <= 10) {
             dayTime = 'Добро утро!'
+        } else if (dateTime.getHours() >= 11 && dateTime.getHours() <= 18) {
+            dayTime = 'Добър ден!'
+        } else if (dateTime.getHours() >= 19 && dateTime.getHours() <= 23) {
+            dayTime = 'Добър вечер!'
         }
         return dayTime;
     }
@@ -42,7 +41,7 @@ export function showDateAndTime() {
         day = day + '-ти'
     }
 
-    let result = greetDay()+ ' Днес е ' + day + ' ' + monthNames[monthIndex]
+    let result = greetDay() + ' Днес е ' + day + ' ' + monthNames[monthIndex]
         + ' ' + year + ' г., ' + hours + ':' + mins.toString().padStart(2, '0')
         + ':' + secs.toString().padStart(2, '0');
 
